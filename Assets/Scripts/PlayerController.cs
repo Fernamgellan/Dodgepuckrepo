@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float speed = 10.0f;
+    public float xRange;
+    public float yRange;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +16,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       float moveHorizontal = Input.GetAxis("Horizontal");
+       // if(transform.position.x > )
+
+       float moveHorizontal = Input.GetAxisRaw("Horizontal");
         //Debug.Log("moveHorizontal: " + moveHorizontal);
 
-        float moveVertical = Input.GetAxis("Vertical");
+        float moveVertical = Input.GetAxisRaw("Vertical");
 
-        Vector2 movement = newVector2(moveHorizontal, moveVertical);
-        
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        transform.Translate(movement * speed * Time.deltaTime);
         //if (Input.GetKeyDown(KeyCode.D))
         //{
 
